@@ -1,1 +1,1 @@
-export * from './input/input.vue'
+export * from './input'
