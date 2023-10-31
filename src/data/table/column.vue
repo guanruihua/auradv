@@ -1,34 +1,33 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'AuTableColumn',
+  inheritAttrs: false
+})
+
 const scope = defineProps({
   prop: {
-    type: String
+    type: String,
+    default: '',
   },
   label: {
     type: [Object, String]
   },
   title: {
     type: Boolean
+  },
+  row: {
+    type: Object,
+    // default: ()=>({})
   }
 })
-console.log(scope)
 
-defineOptions({
-  name: 'AuTableColumn',
-  inheritAttrs: false
-})
 </script>
 
 <template>
-  <th v-if="(scope as any).title">
-    <slot :row="scope">
-      {{ scope.label }}
-    </slot>
+  <th v-if="scope.row && (scope.row as any).title">
+    {{ scope.label }}
   </th>
   <td v-else>
-    <slot :row="scope">
-      {{ scope }}
-    </slot>
+    {{ scope.row && (scope.row as any).row[scope.prop] }}
   </td>
 </template>
-
-<style lang="scss"></style>

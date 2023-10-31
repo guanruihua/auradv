@@ -1,30 +1,39 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'AuTable',
+  inheritAttrs: false
+})
+
+import { ref, watch } from 'vue'
 import { isEffectArray } from 'asura-eye'
+
 const props = defineProps({
   dataSource: {
     type: Array
   }
 })
+const showDataSource = ref(props.dataSource)
 
-console.log(props)
+watch(
+  () => props.dataSource,
+  () => {
+    showDataSource.value = props.dataSource
+  }
+)
 
-defineOptions({
-  name: 'AuTable',
-  inheritAttrs: false
-})
 </script>
 
 <template>
   <div class="au-table">
     <table :border="0" :cellspacing="0">
-      <thead>
+      <thead v-if="isEffectArray(showDataSource)">
         <tr>
           <slot :title="true" />
         </tr>
       </thead>
-      <tbody v-if="isEffectArray(props.dataSource)">
-        <tr v-for="(record, i) in props.dataSource" :key="i">
-          <slot :row="record" :title="false" />
+      <tbody v-if="isEffectArray(showDataSource)">
+        <tr v-for="(row, index) in showDataSource" :key="index">
+          <slot :row="row" :index="index" />
         </tr>
       </tbody>
     </table>
