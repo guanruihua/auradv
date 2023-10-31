@@ -5,6 +5,7 @@
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
+    "src/**/**/*.vue",
     "background/**/*",
     "background/**/*.vue"
   ],

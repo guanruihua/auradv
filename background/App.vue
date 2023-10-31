@@ -1,80 +1,63 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { type Ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { type ObjectType } from 'abandonjs'
+import { isArray } from 'asura-eye'
+import { routes } from './router'
+import { type MenuItemType, AuMenu } from '@/layout'
+const showRoutes: Ref<ObjectType[]> = ref<ObjectType[]>([])
+
+// import * as Cmm  from '../src'
+// console.log(Cmm)
+const init = () => {
+  if (isArray(routes)) {
+    const newList: ObjectType[] = []
+    routes.forEach(item => {
+      if (item.path !== '/') {
+        newList.push(item as ObjectType)
+      }
+    })
+    showRoutes.value = newList
+  }
+}
+onMounted(init)
+
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/form">form</RouterLink>
-      </nav>
+  <div class="wrapper">
+    <div class="aside">
+      <au-menu>      
+        <RouterLink 
+          v-for="item in showRoutes"
+          :key="(item.name as string)"
+          :to="(item.path as string)">
+          {{ item.name }}
+        </RouterLink>
+      </au-menu>
     </div>
-  </header>
-  <RouterView />
+    <div class="main">
+      <RouterView />
+    </div>
+  </div>
 </template>
 
+<style>
+body {
+  background: #fafafa;
+  background: rgb(59, 59, 59);
+}
+</style>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.main{
+  padding: 10px 24px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+@media (min-width: 1024px) {}
 </style>

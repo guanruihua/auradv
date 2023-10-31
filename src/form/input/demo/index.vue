@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { defineComponent } from 'vue'
-import { AuInput, AuForm } from '..'
+import { AuInput } from '..'
 
-const name = 'au-form'
+const name = 'au-input-demo'
 defineComponent({
   name
 })
 </script>
 
 <template>
-  <au-form>
-    <au-input/>
-  </au-form>
+  <au-input/>
 </template>

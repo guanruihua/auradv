@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+body.dark {
+  --g-focus-border: rgb(80, 158, 255);
+}
+
+body:not(.dark) {
+  --g-focus-border: rgb(80, 158, 255);
+  --g-input-text-color: #fff;
+}
+
+body {
+  --control-height: 32px;
+  --control-border-color: #d9d9d9;
+  --control-border-radius: 4px;
+  --control-text-color: var(--g-input-text-color);
+  --control-focus-border-color: var(--g-focus-border);
+}
+
+.au-control {
+  height: var(--control-height);
+  line-height: var(--control-height);
+  padding: 4px 11px;
+  border: none;
+  border-radius: var(--control-border-radius);
+  outline: none;
+  background: transparent;
+
+  color: var(--control-text-color);
+  box-shadow: 0 0 0 1px var(--control-border-color) inset;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 1px var(--control-focus-border-color) inset;
+  }
+}

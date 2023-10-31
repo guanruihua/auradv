@@ -3,18 +3,22 @@ defineOptions({
   name: 'AuInput',
   inheritAttrs: false,
 })
-const name = 'au-input'
-const props = defineProps({
-  val: {
-    type: String,
-    default: '',
-  }
-})
-console.log(props)
+// const props = defineProps({
+//   val: {
+//     type: String,
+//     default: '',
+//   }
+// })
+// console.log(props)
 </script>
 
 <template>
-  <div>
-    {{ name }}
-  </div>  
+  <input class="au-input au-control"/>
 </template>
+
+<style lang="scss">
+
+.au-input {
+
+}
+</style>
