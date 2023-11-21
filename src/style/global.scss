@@ -4,15 +4,19 @@
   box-sizing: border-box;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
 body.dark {
+  --g-txt-color: #fff;
+
   --g-focus-border: rgb(80, 158, 255);
 }
 
 body:not(.dark) {
+  --g-txt-color: #000;
+
   --g-focus-border: rgb(80, 158, 255);
   --g-input-text-color: #fff;
 }

@@ -35,7 +35,6 @@ watch(
     showColumns.value = props.columns as any[]
   }
 )
-
 </script>
 
 <template>
@@ -44,7 +43,7 @@ watch(
       <thead v-if="isEffectArray(showDataSource)">
         <tr>
           <th v-for="(column, index) in showColumns" :key="index">
-            <slot :col="column" :name="`head-${column.prop}`">
+            <slot :col="column" :name="`header-${column.prop}`">
               {{ column.label }}
             </slot>
           </th>
@@ -93,11 +92,11 @@ $border: 1px solid #000;
     border-right: none;
   }
 
-  tbody>tr:first-child>td {
+  tbody > tr:first-child > td {
     border-top: $border;
   }
 
-  tbody>tr:last-child>td {
+  tbody > tr:last-child > td {
     border-bottom: none;
   }
 }

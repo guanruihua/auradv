@@ -7,6 +7,11 @@ export const routes = [
     component: () => import('@/form/demo/index.vue')
   },
   {
+    path: '/button',
+    name: 'button',
+    component: () => import('@/form/button/demo/index.vue')
+  },
+  {
     path: '/form',
     name: 'form',
     component: () => import('@/form/demo/index.vue')
@@ -20,6 +25,11 @@ export const routes = [
     path: '/table',
     name: 'table',
     component: () => import('@/data/table/demo/index.vue')
+  },
+  {
+    path: '/dialog',
+    name: 'dialog',
+    component: () => import('@/feedback/dialog/demo/index.vue')
   },
 ]
 

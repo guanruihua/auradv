@@ -13,7 +13,7 @@ const showRoutes: Ref<ObjectType[]> = ref<ObjectType[]>([])
 const init = () => {
   if (isArray(routes)) {
     const newList: ObjectType[] = []
-    routes.forEach(item => {
+    routes.forEach((item) => {
       if (item.path !== '/') {
         newList.push(item as ObjectType)
       }
@@ -22,17 +22,14 @@ const init = () => {
   }
 }
 onMounted(init)
-
+document.body.className = 'dark'
 </script>
 
 <template>
   <div class="wrapper">
     <div class="aside">
-      <au-menu>      
-        <RouterLink 
-          v-for="item in showRoutes"
-          :key="(item.name as string)"
-          :to="(item.path as string)">
+      <au-menu>
+        <RouterLink v-for="item in showRoutes" :key="item.name as string" :to="item.path as string">
           {{ item.name }}
         </RouterLink>
       </au-menu>
@@ -55,9 +52,10 @@ body {
   display: grid;
   grid-template-columns: auto 1fr;
 }
-.main{
+.main {
   padding: 10px 24px;
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+}
 </style>

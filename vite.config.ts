@@ -19,7 +19,7 @@ export default defineConfig({
     /* CSS 预处理器 */
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "src/assets/styles/index.scss";'
+        additionalData: '@import "src/style/global.scss";'
       }
     }
   },

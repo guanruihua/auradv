@@ -13,7 +13,7 @@ const dataSource = [
   { id: '10', value: '111' },
   { id: '11', value: '111' },
   { id: '12', value: '111' },
-  { id: '13', value: '111' },
+  { id: '13', value: '111' }
 ]
 const columns = [
   { prop: 'id', label: 'head id' },
@@ -22,12 +22,8 @@ const columns = [
 </script>
 
 <template>
-  <au-table style="background: #fff;" :data-source="dataSource" :columns="columns">
-    <template #head-id>
-      id
-    </template>
-    <template #id="scope">
-      No.{{ scope.row.id }}
-    </template>
+  <au-table style="background: #fff" :data-source="dataSource" :columns="columns">
+    <template #header-id> id </template>
+    <template #id="scope"> No.{{ scope.row.id }} </template>
   </au-table>
 </template>
