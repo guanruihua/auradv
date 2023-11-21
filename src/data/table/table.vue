@@ -1,39 +1,62 @@
 <script setup lang="ts">
+import { type Ref } from 'vue'
+
 defineOptions({
   name: 'AuTable',
   inheritAttrs: false
 })
 
 import { ref, watch } from 'vue'
-import { isEffectArray } from 'asura-eye'
+import { isEffectArray, isEffectObject } from 'asura-eye'
 
 const props = defineProps({
   dataSource: {
-    type: Array
+    type: Array<any>
+  },
+  columns: {
+    type: Array<any>
+  },
+  style: {
+    type: Object
   }
 })
-const showDataSource = ref(props.dataSource)
+const showDataSource: Ref<any[]> = ref<any[]>(props.dataSource as any[])
+const showColumns = ref<any[]>(props.columns as any[])
 
 watch(
   () => props.dataSource,
   () => {
-    showDataSource.value = props.dataSource
+    showDataSource.value = props.dataSource as any[]
+  }
+)
+watch(
+  () => props.columns,
+  () => {
+    showColumns.value = props.columns as any[]
   }
 )
 
 </script>
 
 <template>
-  <div class="au-table">
+  <div class="au-table" :style="props.style">
     <table :border="0" :cellspacing="0">
       <thead v-if="isEffectArray(showDataSource)">
         <tr>
-          <slot :title="true" />
+          <th v-for="(column, index) in showColumns" :key="index">
+            <slot :col="column" :name="`head-${column.prop}`">
+              {{ column.label }}
+            </slot>
+          </th>
         </tr>
       </thead>
       <tbody v-if="isEffectArray(showDataSource)">
-        <tr v-for="(row, index) in showDataSource" :key="index">
-          <slot :row="row" :index="index" />
+        <tr v-for="(row, num) in showDataSource" :key="num">
+          <td v-for="(column, index) in showColumns" :key="index">
+            <slot v-if="isEffectObject(row)" :row="row" :index="index" :name="column.prop || index">
+              {{ row[column.prop] }}
+            </slot>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -42,14 +65,17 @@ watch(
 
 <style lang="scss">
 $border: 1px solid #000;
+
 .au-table {
-  padding: 20px 10px;
-  background: #fff;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 12px;
 
   table {
     border: 1px solid #000;
-    border-radius: 4px;
+    border-radius: 12px;
   }
+
   th,
   td {
     padding: 4px 11px;
@@ -67,10 +93,11 @@ $border: 1px solid #000;
     border-right: none;
   }
 
-  tbody > tr:first-child > td {
+  tbody>tr:first-child>td {
     border-top: $border;
   }
-  tbody > tr:last-child > td {
+
+  tbody>tr:last-child>td {
     border-bottom: none;
   }
 }

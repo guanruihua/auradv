@@ -5,4 +5,4 @@ export type FormProps = ExtractPropTypes<{
   val?: string
 }>
 
-export type InputInstance = InstanceType<typeof Form>
+export type FormInstance = InstanceType<typeof Form>
