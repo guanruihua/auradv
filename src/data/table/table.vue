@@ -1,57 +1,38 @@
 <script setup lang="ts">
-import { type Ref } from 'vue'
+import { withDefaults } from 'vue'
+import type { AuTableProps } from './table'
+import { useColumn } from './hook'
 
 defineOptions({
   name: 'AuTable',
   inheritAttrs: false
 })
 
-import { ref, watch } from 'vue'
 import { isEffectArray, isEffectObject } from 'asura-eye'
 
-const props = defineProps({
-  dataSource: {
-    type: Array<any>
-  },
-  columns: {
-    type: Array<any>
-  },
-  style: {
-    type: Object
-  }
+const props = withDefaults(defineProps<AuTableProps>(), {
+  dataSource: () => [],
+  columns: () => []
 })
-const showDataSource: Ref<any[]> = ref<any[]>(props.dataSource as any[])
-const showColumns = ref<any[]>(props.columns as any[])
 
-watch(
-  () => props.dataSource,
-  () => {
-    showDataSource.value = props.dataSource as any[]
-  }
-)
-watch(
-  () => props.columns,
-  () => {
-    showColumns.value = props.columns as any[]
-  }
-)
+const { columnRef } = useColumn(props)
 </script>
 
 <template>
-  <div class="au-table" :style="props.style">
+  <div class="au-table" ref="au-table" :style="props.style">
     <table :border="0" :cellspacing="0">
-      <thead v-if="isEffectArray(showDataSource)">
+      <thead v-if="isEffectArray(dataSource)">
         <tr>
-          <th v-for="(column, index) in showColumns" :key="index">
+          <th v-for="(column, index) in columnRef" :key="index">
             <slot :col="column" :name="`header-${column.prop}`">
               {{ column.label }}
             </slot>
           </th>
         </tr>
       </thead>
-      <tbody v-if="isEffectArray(showDataSource)">
-        <tr v-for="(row, num) in showDataSource" :key="num">
-          <td v-for="(column, index) in showColumns" :key="index">
+      <tbody v-if="isEffectArray(dataSource)">
+        <tr v-for="(row, num) in dataSource" :key="num">
+          <td v-for="(column, index) in columnRef" :key="index">
             <slot v-if="isEffectObject(row)" :row="row" :index="index" :name="column.prop || index">
               {{ row[column.prop] }}
             </slot>
@@ -63,41 +44,80 @@ watch(
 </template>
 
 <style lang="scss">
-$border: 1px solid #000;
+// $border: 1px solid #000;
+$border: none;
 
 .au-table {
-  display: inline-block;
-  padding: 8px;
+  display: block;
+  width: 100%;
   border-radius: 12px;
 
   table {
-    border: 1px solid #000;
+    width: 100%;
+    border: $border;
     border-radius: 12px;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  thead,
+  tbody {
+    width: 100%;
   }
 
   th,
   td {
-    padding: 4px 11px;
-    box-sizing: border-box;
-    border-right: $border;
-    border-bottom: $border;
+    text-align: left;
+    padding: 12px 12px;
+    &:first-child {
+      padding-left: 24px;
+    }
+    &:last-child {
+      padding-right: 24px;
+    }
   }
 
   th {
     border-bottom: none;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 
   th:last-child,
   td:last-child {
     border-right: none;
   }
-
+  tbody > tr {
+    background: transparent;
+    td {
+      background: transparent;
+    }
+    &:last-child {
+      // td {
+      //   padding-bottom: 16px;
+      // }
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+    &:nth-child(2n + 1) {
+      background: rgba(240, 240, 240, 0.5);
+    }
+    &:active,
+    &:hover {
+      background: rgb(240, 240, 240);
+    }
+  }
   tbody > tr:first-child > td {
     border-top: $border;
   }
 
   tbody > tr:last-child > td {
     border-bottom: none;
+    &:first-child {
+      border-bottom-left-radius: 12px;
+    }
+    &:last-child {
+      border-bottom-right-radius: 12px;
+    }
   }
 }
 </style>

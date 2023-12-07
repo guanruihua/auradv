@@ -14,7 +14,7 @@ defineOptions({
 <style lang="scss">
 .au-menu {
   min-height: 100vh;
-  border-right: 1px solid #eee;
+  // border-right: 1px solid #eee;
   padding-top: 20px;
   padding-bottom: 20px;
 

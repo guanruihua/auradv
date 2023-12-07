@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { useAttrs } from 'vue'
 defineOptions({
   name: 'AuButton',
   inheritAttrs: false
 })
-const { type = 'default' } = defineProps<{
+const { type = 'default' } = withDefaults(defineProps<{
   type?: 'default' | 'primary' | 'success' | 'info' | 'warming' | 'danger' | string
-}>()
+}>(), {
+  type: 'default'
+})
+
+const props = useAttrs()
+
+console.log(props)
 </script>
 
 <template>
-  <button :class="`au-button au-button-${type}`">
+  <button v-bind="props" :class="`au-button au-button-${type}`">
     <slot> Click </slot>
   </button>
 </template>

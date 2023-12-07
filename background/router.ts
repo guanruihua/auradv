@@ -31,6 +31,11 @@ export const routes = [
     name: 'dialog',
     component: () => import('@/feedback/dialog/demo/index.vue')
   },
+  {
+    path: '/popover',
+    name: 'popover',
+    component: () => import('@/feedback/popover/demo/index.vue')
+  },
 ]
 
 const router = createRouter({
