@@ -14,8 +14,8 @@ dependencies:
 
 devDependencies:
   0log:
-    specifier: ^0.0.6
-    version: 0.0.6
+    specifier: ^0.1.0
+    version: 0.1.0
   '@rushstack/eslint-patch':
     specifier: ^1.3.3
     version: 1.3.3
@@ -76,9 +76,6 @@ devDependencies:
   prettier:
     specifier: ^3.0.3
     version: 3.0.3
-  rh-color:
-    specifier: ^1.0.5
-    version: 1.0.5
   sass:
     specifier: ^1.69.5
     version: 1.69.5
@@ -100,8 +97,8 @@ devDependencies:
 
 packages:
 
-  /0log@0.0.6:
-    resolution: {integrity: sha512-McU2HLggfI0VKYAprcvE4OqgaSZ2eAsd70vvWwIbiZELpvIBDclP3XNzcGD3ZIlHEcs1cLOm5estu3z2AW+6OA==}
+  /0log@0.1.0:
+    resolution: {integrity: sha512-8RIgKVXKwnpSg1R9GHd8b53XmDYIATVXi8zAMar4fB/ofOrkrLZJ0ygXhhC6ij/dqEpAGNqb8ySs2DzFPe1KJQ==}
     dev: true
 
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -3569,10 +3566,6 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /reflect-metadata@0.1.13:
-    resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}
-    dev: true
-
   /request-progress@3.0.0:
     resolution: {integrity: sha512-MnWzEHHaxHO2iWiQuHrUPBi/1WeBf5PkxQqNyNvLl9VAYSdXkP8tQ3pBSeCPD+yw0v0Aq1zosWLz0BdeXpWwZg==}
     dependencies:
@@ -3603,17 +3596,6 @@ packages:
 
   /rfdc@1.3.0:
     resolution: {integrity: sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==}
-    dev: true
-
-  /rh-color@1.0.5:
-    resolution: {integrity: sha512-DtgPbikJJzqAGf36Ga5Y5hou1Jfe03dsMjWzoDhXgBORJYjfVAA2iZM4xM/f78GchAhSurwT2htYWusAJefjZg==}
-    dependencies:
-      reflect-metadata: 0.1.13
-      rh-ts-methods: 0.0.2
-    dev: true
-
-  /rh-ts-methods@0.0.2:
-    resolution: {integrity: sha512-6UL1x2zlTTsDtl/4TIwDzpaucySm9gHBy0HQFPKL29NTRRbikTMxRFf+/iXNTXUUZSAgpwLERD5ISV1wtAGErw==}
     dev: true
 
   /rimraf@3.0.2:

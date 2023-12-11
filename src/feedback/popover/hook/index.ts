@@ -1,33 +1,43 @@
 /* eslint-disable*/
-import { onMounted, getCurrentInstance, ref } from 'vue'
+import { onMounted, ref, type CSSProperties, watch, getCurrentInstance } from 'vue'
 import { log } from '0log'
-import { } from 'abandonjs'
 import type { AuPopoverProps } from '../popover';
+import { getXY } from '../util';
 
-const getRect = (key: string) => {
-  const dom: any = getCurrentInstance()?.refs[key]
-  if (dom) {
-    return (dom as HTMLDivElement).getBoundingClientRect()
-  }
-}
-export function usePopover(props: AuPopoverProps) {
+export function usePopover(props: AuPopoverProps): any {
+  const { placement = 'top' } = props
   const hasError = ref<boolean>(false)
+  const popoverXY = ref<CSSProperties>({ left: '0px', top: '0px' })
+  const triangleXY = ref<CSSProperties>({ left: '0px', top: '0px' })
 
   const init = () => {
-    const g = document.body.getBoundingClientRect()
-    const box = getRect('au-popover')
-    const pop = getRect('popoverWrapper')
-
-    log(
-      g, box, pop
-    )
+    const XY = getXY(placement)
+    popoverXY.value = XY.popoverXY
+    triangleXY.value = XY.triangleXY
+    // log(popoverXY.value)
+    // log('init time: '+ new Date().getTime())
   }
+
+  watch(() => [
+    // getCurrentInstance()?.refs['au-popover'],
+    // (getCurrentInstance()?.refs['au-popover'] as any)?.getBoundingClientRect(),
+    // getCurrentInstance()?.refs['popoverWrapper'],
+    (getCurrentInstance()?.refs['popoverWrapper'] as any)?.getBoundingClientRect(),
+    document.body.getBoundingClientRect()
+  ], () => {
+    init()
+  }, {
+    deep: true,
+    immediate: true,
+  })
 
   onMounted(() => {
     init()
   })
 
   return {
-    hasError
+    hasError,
+    popoverXY,
+    triangleXY
   }
 }

@@ -3,6 +3,7 @@ import Popover from './popover.vue'
 
 export const AuPopover = Popover
 export type Trigger = 'click' | 'focus' | 'hover'
+export type Placement = 'top' | 'right' |'bottom' | 'left' | string
 
 export interface AuPopoverProps extends ComponentProps {
   /**
@@ -10,4 +11,5 @@ export interface AuPopoverProps extends ComponentProps {
    * @default 'hover'
    */
   trigger?: Trigger | Trigger[]
+  placement?: Placement
 }

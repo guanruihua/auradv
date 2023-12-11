@@ -5,49 +5,45 @@ import { usePopover } from './hook'
 defineOptions({
   name: 'au-popover'
 })
-const props = withDefaults(defineProps<AuPopoverProps>(), {})
-usePopover(props)
-
+const props = withDefaults(defineProps<AuPopoverProps>(), {
+  placement: 'top'
+})
+const { popoverXY, triangleXY } = usePopover(props)
 </script>
 
 <template>
   <div class="au-popover" ref="au-popover">
-    <div class="content" ref="popoverWrapper">
-      <slot name="content"> content </slot>
+    <div class="content" ref="popoverWrapper" :style="[popoverXY]">
+      <slot name="content">Content</slot>
     </div>
-    <slot></slot>
-    <div class="triangle" />
+    <span class="inner">
+      <slot></slot>
+    </span>
+    <div class="triangle" :style="[triangleXY]" />
   </div>
 </template>
 
 <style lang="scss" scope>
 .au-popover {
   position: relative;
-  display: inline-block;
   border-radius: 12px;
-  padding: 10px 12px;
-  color: #fff;
-  background: gainsboro;
-  &>.triangle{
+
+  & > .triangle {
     position: absolute;
-    top: 35px;
-    left: 18px;
     width: 0;
     height: 0;
     z-index: 9999;
     border-color: #eee;
     border-width: 8px;
     border-style: solid;
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
   }
   & > .content {
     position: absolute;
-    top: 50px;
+    top: 0;
     left: 0;
     color: #000;
-    padding: 12px 18px;
+    z-index: 9999;
+    padding: 18px;
     background: #eee;
     border: none;
     border-radius: 12px;
