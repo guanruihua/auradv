@@ -36,6 +36,11 @@ export const routes = [
     name: 'popover',
     component: () => import('@/feedback/popover/demo/index.vue')
   },
+  {
+    path: '/tab',
+    name: 'tab',
+    component: () => import('@/layout/tab/demo/index.ts')
+  },
 ]
 
 const router = createRouter({
