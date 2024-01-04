@@ -1,20 +1,20 @@
 <script setup lang="ts">
 defineOptions({
   name: 'AuMenu',
-  inheritAttrs: false,
+  inheritAttrs: false
 })
 </script>
 
 <template>
   <div class="au-menu">
-    <slot/>
+    <slot />
   </div>
 </template>
 
 <style lang="scss">
 .au-menu {
   min-height: 100vh;
-  // border-right: 1px solid #eee;
+  border-right: 1px solid #000;
   padding-top: 20px;
   padding-bottom: 20px;
 
@@ -23,14 +23,14 @@ defineOptions({
     height: 32px;
     line-height: 32px;
     min-width: 10vw;
-    color: #fff;
+    // color: #fff;
     font-weight: bold;
     padding: 0 32px;
     margin-bottom: 10px;
     &.active,
     &:focus,
     &:active,
-    &:hover{
+    &:hover {
       background-color: #999999;
     }
   }

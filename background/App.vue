@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import { type ObjectType } from 'abandonjs'
 import { isArray } from 'asura-eye'
 import { routes } from './router'
-import { type MenuItemType, AuMenu } from '@/layout'
+import { type MenuItemType, AuMenu, AuHeader } from '@/layout'
 const showRoutes: Ref<ObjectType[]> = ref<ObjectType[]>([])
 
 // import * as Cmm  from '../src'
@@ -22,20 +22,27 @@ const init = () => {
   }
 }
 onMounted(init)
-document.body.className = 'dark'
+// document.body.className = 'dark'
+// document.body.className = 'dark'
 </script>
 
 <template>
   <div class="wrapper">
     <div class="aside">
       <au-menu>
-        <RouterLink v-for="item in showRoutes" :key="item.name as string" :to="item.path as string">
+        <router-link
+          v-for="item in (showRoutes as any)"
+          :key="item.name"
+          :to="item.path" >
           {{ item.name }}
-        </RouterLink>
+        </router-link>
       </au-menu>
     </div>
     <div class="main">
-      <RouterView />
+      <au-header >
+        aaa
+      </au-header>
+      <router-view />
     </div>
   </div>
 </template>
@@ -43,7 +50,7 @@ document.body.className = 'dark'
 <style>
 body {
   background: #fafafa;
-  background: rgb(59, 59, 59);
+  /* background: rgb(59, 59, 59); */
 }
 </style>
 
@@ -52,10 +59,11 @@ body {
   display: grid;
   grid-template-columns: auto 1fr;
 }
+
 .main {
   padding: 10px 24px;
 }
 
-@media (min-width: 1024px) {
-}
+@media (min-width: 1024px) {}
 </style>
+
