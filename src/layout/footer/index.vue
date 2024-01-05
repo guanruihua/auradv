@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'au-header'
+  name: 'AuFooter'
 })
 defineProps({
   fix: {
@@ -11,13 +11,13 @@ defineProps({
 </script>
 
 <template>
-  <div :class="['au-header', { fix }]">
+  <div :class="['au-footer', { fix }]">
     <slot />
   </div>
 </template>
 
 <style lang="scss">
-.au-header {
+.au-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,11 +26,11 @@ defineProps({
   height: 32px;
   padding: 20px;
   background-color: #fff;
-  border-bottom: 1px solid #777;
+  border-top: 1px solid #777;
 
   &.fix {
     position: absolute;
-    top: 0;
+    bottom: 0;
   }
 }
 </style>
