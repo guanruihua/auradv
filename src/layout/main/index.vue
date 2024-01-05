@@ -1,22 +1,23 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'AuContent'
+  name: 'AuMain'
 })
 </script>
 
 <template>
-  <div class="au-content">
+  <div class="au-main">
     <slot />
   </div>
 </template>
 
 <style lang="scss">
-.au-content {
+.au-main {
   position: relative;
   height: 100%;
   max-height: 100%;
-  padding: 14px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 40px 1fr 40px;
+  gap: 1px;
 }
 </style>

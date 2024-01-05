@@ -4,9 +4,10 @@ import {
   AuMenu,
   AuHeader,
   AuFooter,
-  AuContent
+  AuContent,
+  AuMain
 } from '@/layout'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import './index.scss'
 import { onMounted, ref } from 'vue'
 import { type Ref } from 'vue'
@@ -36,25 +37,16 @@ export default defineComponent({
     return { showRoutes, init }
   },
   render() {
-    // console.log(this.showRoutes)
     return (
       <div class="wrapper">
-        <div class="aside">
-          <AuMenu>
-            {this.showRoutes.map((item: any) => {
-              return (
-                <RouterLink key={item.name} to={item.path}>
-                  {item.name}
-                </RouterLink>
-              )
-            })}
-          </AuMenu>
-        </div>
-        <AuContent class="main">
-          <AuHeader> heeder </AuHeader>
-          <RouterView />
-          <AuFooter> footer </AuFooter>
-        </AuContent>
+        <AuMenu class="aside" routes={routes} />
+        <AuMain class="main">
+          <AuHeader></AuHeader>
+          <AuContent>
+            <RouterView />
+          </AuContent>
+          <AuFooter></AuFooter>
+        </AuMain>
       </div>
     )
   }
