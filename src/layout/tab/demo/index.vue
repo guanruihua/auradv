@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { defineComponent, h } from 'vue'
-// import { AuTab } from '..'
-// console.log(AuTab)
-defineComponent({
-  render() {
-    return h('h1', null, 'aaaaa')
-  }
-})
+import { AuTab } from '..'
+const items = [
+  {
+    title: 'Tab-a',
+    prop: 'tab-a'
+  },
+  {
+    title: 'Tab-b',
+    prop: 'tab-b'
+  },
+]
 </script>
 
 <template>
-  <div>aa</div>
-  <!-- <au-tab>aaaaa</au-tab> -->
+  <au-tab :items="items"></au-tab>
 </template>

@@ -39,7 +39,12 @@ export const routes = [
   {
     path: '/tab',
     name: 'tab',
-    component: () => import('@/layout/tab/demo/index.ts')
+    component: () => import('@/layout/tab/demo/index.vue')
+  },
+  {
+    path: '/chart',
+    name: 'chart',
+    component: () => import('@/chart/demo/index.vue')
   },
 ]
 

@@ -1,0 +1,6 @@
+export { default as AuChart } from './index.vue'
+export { default as AuMapChart } from './map.vue'
+export { default as AuLineChart } from './line.vue'
+export { default as AuLinesChart } from './lines.vue'
+export { default as AuHistogramChart } from './histogram.vue'
+export { default as AuPieChart } from './pie.vue'

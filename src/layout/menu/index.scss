@@ -1,14 +1,15 @@
 .au-menu {
   height: 100vh;
   max-height: 100vh;
-  border-right: 1px solid #777;
+  border-right: 1px solid var(--oc);
   padding: 10px 8px;
 
   a {
     display: block;
-    color: #777;
-    height: 32px;
-    line-height: 32px;
+    color: var(--oc);
+    width: 100%;
+    height: var(--h);
+    line-height: var(--h);
     padding: 0 10px;
     font-weight: bold;
     text-align: start;
@@ -19,8 +20,8 @@
     &:focus,
     &:active,
     &:hover {
-      color: #fff;
-      background-color: #777;
+      color: var(--ac);
+      background-color: var(--ab);
     }
 
   }

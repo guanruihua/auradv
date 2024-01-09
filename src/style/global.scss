@@ -10,7 +10,6 @@ a {
 
 body.dark {
   --g-txt-color: #fff;
-
   --g-focus-border: rgb(80, 158, 255);
 }
 
@@ -22,6 +21,20 @@ body:not(.dark) {
 }
 
 body {
+  // 主题色
+  --c: #509eff;
+  // 原始字体颜色
+  --oc: #505461;
+  // 原始背景色
+  --ob: #f3f3f3;
+  // 响应字体颜色
+  --ac: #fff;
+  // 相应背景色
+  --ab: #509eff;
+
+  // 默认高度
+  --h: 32px;
+
   --control-height: 32px;
   --control-border-color: #d9d9d9;
   --control-border-radius: 4px;
