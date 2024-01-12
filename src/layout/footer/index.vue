@@ -3,14 +3,15 @@ import { useRouter } from 'vue-router'
 defineOptions({
   name: 'AuFooter'
 })
+// eslint-disable-next-line
 const router = useRouter()
 </script>
 
 <template>
   <div class="au-footer">
     <slot>
-      {{ router.currentRoute.value.query }}
-      {{ router.currentRoute.value.params }}
+      <!-- {{ router.currentRoute.value.query }} -->
+      <!-- {{ router.currentRoute.value.params }} -->
     </slot>
   </div>
 </template>

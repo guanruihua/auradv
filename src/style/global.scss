@@ -42,6 +42,20 @@ body {
   --control-focus-border-color: var(--g-focus-border);
 }
 
+.relief-shadow {
+  box-shadow:
+    7px 7px 12px rgba(0, 0, 0, 0.4),
+    -7px -7px 12px rgba(255, 255, 255, 0.9);
+}
+
+.relief-inset-shadow {
+  box-shadow:
+    0 -3px 4px #999,
+    inset 0 3px 7px #333,
+    0 4px 4px #ffe,
+    inset 0 -4px 5px #ddd;
+}
+
 .au-control {
   height: var(--control-height);
   line-height: var(--control-height);

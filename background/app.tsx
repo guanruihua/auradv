@@ -33,7 +33,6 @@ export default defineComponent({
     }
     onMounted(init)
     // document.body.className = 'dark'
-
     return { showRoutes, init }
   },
   render() {

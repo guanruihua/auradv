@@ -2,7 +2,7 @@
   height: 100vh;
   max-height: 100vh;
   border-right: 1px solid var(--oc);
-  padding: 10px 8px;
+  padding: 10px 12px;
 
   a {
     display: block;
@@ -10,11 +10,11 @@
     width: 100%;
     height: var(--h);
     line-height: var(--h);
-    padding: 0 10px;
+    padding: 0 14px;
     font-weight: bold;
     text-align: start;
     margin-bottom: 10px;
-    border-radius: 12px;
+    border-radius: 8px;
 
     &.active,
     &:focus,
