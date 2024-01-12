@@ -19,23 +19,22 @@ const columns = [
   { prop: 'id', label: 'head id' },
   { prop: 'value', label: 'head Value 1' },
   { prop: 'value', label: 'head Value 2' },
-  { prop: 'value', label: 'head Value 3' },
-  { prop: 'value', label: 'head Value 4' },
-  { prop: 'value', label: 'head Value 5' },
-  { prop: 'value', label: 'head Value 6' },
-  { prop: 'value', label: 'head Value 7' },
-  { prop: 'value', label: 'head Value 8' },
-  { prop: 'value', label: 'head Value 9' },
-  { prop: 'value', label: 'head Value 10' },
-  { prop: 'value', label: 'head Value 11' },
-  { prop: 'value', label: 'head Value 12' },
-  { prop: 'value', label: 'head Value 13' }
+  // { prop: 'value', label: 'head Value 3' },
+  // { prop: 'value', label: 'head Value 4' },
+  // { prop: 'value', label: 'head Value 5' },
+  // { prop: 'value', label: 'head Value 6' },
+  // { prop: 'value', label: 'head Value 7' },
+  // { prop: 'value', label: 'head Value 8' },
+  // { prop: 'value', label: 'head Value 9' },
+  // { prop: 'value', label: 'head Value 10' },
+  // { prop: 'value', label: 'head Value 11' },
+  // { prop: 'value', label: 'head Value 12' },
+  // { prop: 'value', label: 'head Value 13' }
 ]
 </script>
 
 <template>
   <div>
-    <!-- aaaa -->
     <au-table style="background: #fff" :data-source="dataSource" :columns="columns">
       <template #header-id> id </template>
       <template #id="scope"> No.{{ scope.row.id }} </template>

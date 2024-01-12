@@ -6,9 +6,9 @@ import { onMounted, watch, ref, getCurrentInstance } from 'vue'
 const Default_Col_Width = 180
 
 export function useColumn(props: AuTableProps): any {
-  if (props.columns.length < 3) {
-    return [props.columns, []]
-  }
+  // if (props.columns.length < 3) {
+  //   return [props.columns, []]
+  // }
   
   const getTableWidth = () => {
     const dom: any = getCurrentInstance()?.refs['au-table']

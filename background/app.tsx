@@ -44,7 +44,7 @@ export default defineComponent({
           <AuContent>
             <RouterView />
           </AuContent>
-          <AuFooter></AuFooter>
+          {/* <AuFooter></AuFooter> */}
         </AuMain>
       </div>
     )
