@@ -7,9 +7,9 @@ import geoJson from './world.json'
 import { type ObjectType } from 'abandonjs';
 
 const props = withDefaults(defineProps<{
-  geoName: string,
+  geoName?: string,
   // 指定图表的配置项和数据
-  geo: ObjectType,
+  geo?: ObjectType,
   options?: ObjectType
 }>(),{
   geoName: 'world',

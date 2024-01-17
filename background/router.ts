@@ -27,6 +27,11 @@ export const routes = [
     component: () => import('@/data/table/demo/index.vue')
   },
   {
+    path: '/number',
+    name: 'number',
+    component: () => import('@/data/number/demo/index.vue')
+  },
+  {
     path: '/dialog',
     name: 'dialog',
     component: () => import('@/feedback/dialog/demo/index.vue')

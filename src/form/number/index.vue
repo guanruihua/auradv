@@ -1,8 +1,9 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'AuInput',
-  inheritAttrs: false,
+  name: 'AuInputNumber',
+  inheritAttrs: false
 })
+import { ref } from 'vue'
 // const props = defineProps({
 //   val: {
 //     type: String,
@@ -10,15 +11,15 @@ defineOptions({
 //   }
 // })
 // console.log(props)
+const val = ref('')
 </script>
 
 <template>
-  <input class="au-input au-control"/>
+  <input class="au-input-number au-control" v-model="val" type="number" />
 </template>
 
 <style lang="scss">
-
-.au-input {
-
+.au-input-number {
+  color: #000;
 }
 </style>

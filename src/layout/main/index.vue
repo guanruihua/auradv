@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { type CSSProperties, onMounted, ref } from 'vue'
-
 defineOptions({
   name: 'AuMain'
 })
@@ -10,9 +9,15 @@ const myStyle = ref<CSSProperties>({
 })
 const init = () => {
   if (!auMainDom.value) return
-  const len = auMainDom.value.childNodes.length
-  const firstDom = auMainDom.value.childNodes[0] as HTMLDivElement
-  const lastDom = auMainDom.value.childNodes[len - 1] as HTMLDivElement
+  const nodes = []
+  auMainDom.value.childNodes.forEach((item) => {
+    if (item.nodeName === 'DIV') {
+      nodes.push(item)
+    }
+  })
+  const len = nodes.length
+  const firstDom = nodes[0] as HTMLDivElement
+  const lastDom = nodes[len - 1] as HTMLDivElement
   const rows = ['40px', '1fr', '40px']
   if (!firstDom.className || firstDom.className !== 'au-header') {
     rows[0] = ''

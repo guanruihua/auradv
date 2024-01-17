@@ -1,34 +1,39 @@
 <script setup lang="ts">
 import type { StyleType, ClassNameType } from '@/type'
+import { withDefaults } from 'vue'
 defineOptions({
   name: 'AuDialog',
   inheritAttrs: false
 })
-const {
-  open = false,
-  close = () => {},
-  cancel = () => {},
-  confirm = () => {},
-  class: className,
-  style
-} = defineProps<{
-  open?: boolean
-  close?: () => void
-  cancel?: () => void
-  confirm?: () => void
-  style?: StyleType
-  class?: ClassNameType
-}>()
+const props = withDefaults(
+  defineProps<{
+    open?: boolean
+    close?: () => void
+    cancel?: () => void
+    confirm?: () => void
+    style?: StyleType
+    class?: ClassNameType
+  }>(),
+  {
+    open: false
+  }
+)
 </script>
 
 <template>
   <transition>
-    <div v-show="open" class="au-dialog" :style="{ display: open ? 'block' : 'none' }">
-      <div class="au-dialog-box" :class="className" :style="style">
+    <div
+      v-show="open"
+      class="au-dialog"
+      :style="{ display: props.open ? 'block' : 'none' }"
+    >
+      <div class="au-dialog-box" :class="props.class" :style="props.style">
         <div class="au-dialog-header">
           <slot name="header">
             <div class="au-dialog-header-title">Title</div>
-            <button class="au-dialog-header-close-logo" @click="close">X</button>
+            <button class="au-dialog-header-close-logo" @click="props.close">
+              X
+            </button>
           </slot>
         </div>
         <div class="au-dialog-content">
@@ -36,8 +41,8 @@ const {
         </div>
         <div class="au-dialog-footer">
           <slot name="footer">
-            <button @click="cancel">Cancel</button>
-            <button @click="confirm">Confirm</button>
+            <button @click="props.cancel">Cancel</button>
+            <button @click="props.confirm">Confirm</button>
           </slot>
         </div>
       </div>

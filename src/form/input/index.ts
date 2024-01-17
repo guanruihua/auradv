@@ -1,5 +1,9 @@
-export * from './input'
+import type { ExtractPropTypes } from 'vue'
+import type Input from './index.vue'
 
-import Input from './input.vue'
-export const AuInput = Input
-// export default AuInput
+export { default as AuInput } from './index.vue'
+export type InputProps = ExtractPropTypes<{
+  val?: string
+}>
+
+export type InputInstance = InstanceType<typeof Input>

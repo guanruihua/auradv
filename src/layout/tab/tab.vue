@@ -3,6 +3,7 @@ defineOptions({ name: 'AuTabs' })
 import { onMounted, watch, ref } from 'vue'
 import { isEffectArray } from 'asura-eye'
 import { type ObjectType } from 'abandonjs'
+// import {} from '@/'
 
 const props = withDefaults(defineProps<{ items?: any[] }>(), {
   items: () => []
@@ -42,12 +43,12 @@ onMounted(() => {
         @click="() => (active = item.prop)"
       >
         <slot :name="'title-icon-' + item.prop">
-          <a-icon
+          <!-- <a-icon
             v-if="item.icon"
             :icon="item.icon"
             style="font-size: 20px; margin-right: 10px"
             v-bind="item.iconProps || {}"
-          />
+          /> -->
         </slot>
         <slot :name="'title-' + item.prop">
           {{ item.title }}
