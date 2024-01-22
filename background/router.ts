@@ -22,6 +22,11 @@ export const routes = [
     component: () => import('@/form/input/demo/index.vue')
   },
   {
+    path: '/inputFile',
+    name: 'inputFile',
+    component: () => import('@/form/file/demo/index.vue')
+  },
+  {
     path: '/table',
     name: 'table',
     component: () => import('@/data/table/demo/index.vue')
