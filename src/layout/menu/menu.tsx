@@ -41,12 +41,21 @@ export default defineComponent({
           )
             return
           return (
-            <RouterLink
-              class={{ active: item.name === this.nowRouter.name }}
-              to={item.path}
-            >
-              {item.name}
-            </RouterLink>
+            <div class={{ active: item.name === this.nowRouter.name }}>
+              <RouterLink
+                class={{ active: item.name === this.nowRouter.name }}
+                to={item.path}
+              >
+                {item.name}
+              </RouterLink>
+              {item.children && (
+                <AuMenu
+                  routes={item.children}
+                  hiddenName={this.hiddenName}
+                  hiddenPath={this.hiddenPath}
+                />
+              )}
+            </div>
           )
         })}
       </div>

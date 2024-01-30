@@ -12,19 +12,25 @@ export const routes = [
     component: () => import('@/form/button/demo/index.vue')
   },
   {
-    path: '/form',
-    name: 'form',
-    component: () => import('@/form/demo/index.vue')
-  },
-  {
-    path: '/input',
-    name: 'input',
-    component: () => import('@/form/input/demo/index.vue')
-  },
-  {
-    path: '/inputFile',
-    name: 'inputFile',
-    component: () => import('@/form/file/demo/index.vue')
+    path: '/formBox',
+    name: 'Form',
+    children: [
+      {
+        path: '/form',
+        name: 'form',
+        component: () => import('@/form/demo/index.vue')
+      },
+      {
+        path: '/input',
+        name: 'input',
+        component: () => import('@/form/input/demo/index.vue')
+      },
+      {
+        path: '/inputFile',
+        name: 'inputFile',
+        component: () => import('@/form/file/demo/index.vue')
+      }
+    ]
   },
   {
     path: '/table',
@@ -55,7 +61,7 @@ export const routes = [
     path: '/chart',
     name: 'chart',
     component: () => import('@/chart/demo/index.vue')
-  },
+  }
 ]
 
 const router = createRouter({
@@ -64,3 +70,4 @@ const router = createRouter({
 })
 
 export default router
+

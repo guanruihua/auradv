@@ -3,7 +3,14 @@
   grid-template-columns: auto 1fr;
   height: 100vh;
   max-height: 100vh;
+
+  .aside {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-right: 1px solid var(--oc);
+  }
 }
+
 .main {
   position: relative;
   width: 100%;

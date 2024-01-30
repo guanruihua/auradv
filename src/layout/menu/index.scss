@@ -1,8 +1,5 @@
 .au-menu {
-  height: 100vh;
-  max-height: 100vh;
-  border-right: 1px solid var(--oc);
-  padding: 10px 12px;
+  padding: 0 8px;
 
   a {
     display: block;
@@ -13,7 +10,7 @@
     padding: 0 14px;
     font-weight: bold;
     text-align: start;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     border-radius: 8px;
 
     &.active,
